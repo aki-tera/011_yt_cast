@@ -1,3 +1,6 @@
+#!/usr/bin/env python3
+
+
 import youtube_dl
 
 import cgi
@@ -18,37 +21,26 @@ form_check = 0
 if "yt_url" not in form:
   form_check = 1
 
-
-
-#urlの入力
-url = form["yt_url"].value
-#タイトルチェック
-with youtube_dl.YoutubeDL() as ydl:
-    info_dict = ydl.extract_info(url, download=False)
-    video_title = info_dict.get('title', None)
-
-
-
 # パラメータエラー時の対応
 # python の cgiモジュールは変数取得のためにGET/POSTメソッドによって
 # 処理を変更する必要はないのでメチャ楽だ！
 if form_check == 1 :
   print ("<h2>ERROR !</h2>")
-  print ("Please fill in the name and addr fields.")
+  print ("Please fill in the correct URL.")
 else :
-    print("<br>")
-    print ("<b>ダウンロードタイトル</b>", video_title)
+    #urlの入力
+    url = form["yt_url"].value
+    #出力ファイル名
+    outtmpl = "%(title)s.%(ext)s"
+    #出力フォルダ
+    down_dir = "\\youtube\\movie\\"
+    udl_opts = {"outtmpl": down_dir+outtmpl}
+    #実際のダウンロード処理
+    with youtube_dl.YoutubeDL(udl_opts) as ydl:
+        ydl.download([url])
+    print("<br><br>")
+    print ("<b>complete the downloading</b>")
 
+print("<br><br>")
+print('<a href="../index.html">Return start-page</a>')
 print ("</body></html>")
-
-
-#出力ファイル名
-outtmpl = "%(title)s.%(ext)s"
-#出力フォルダ
-down_dir = "\\youtube\\movie\\"
-udl_opts = {"outtmpl": down_dir+outtmpl}
-#実際のダウンロード処理
-with youtube_dl.YoutubeDL(udl_opts) as ydl:
-    ydl.download([url])
-
-print("<b>ダウンロード完了<b>")
