@@ -6,15 +6,19 @@
   </head>
 
   <body>
-    <form id="form">
+    <form id="form_url">
       <div>
         <label>Youtube URL</label>
         <input type="url" id="url" value="" size="50">
       </div>
-      <button type="submit" class="btn btn-primary">Get title</button>
+      <p>
+      <button type="submit" class="get_title">Get title</button>
     </form>
     <div id="result">
     </div>
+
+
+
 
 
 <!--jqueryの開始-->
@@ -24,7 +28,7 @@
 <!--htmlファイルの読み込み後に以下を実行すること-->
     $(document).ready(function() {
 <!--formタグを対象として処理をする-->
-      $('#form').submit(function() {
+      $('#form_url').submit(function() {
 <!--Ajaxで送信するので、通常のフォーム送信はキャンセル-->
         event.preventDefault();
 <!--thisは現在動作している要素を示すが、なんのためか不明-->
@@ -45,6 +49,11 @@
         .fail(function() {
           $('#result').html('Failed.');
         });
+      });
+<!--追加されたボタンの処理-->
+      $('#result').on('click', '#btn_get', function() {
+        var test = $('#url').val();
+        alert( test );
       });
     });
     </script>

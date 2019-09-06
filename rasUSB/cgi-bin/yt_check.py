@@ -4,7 +4,7 @@
 import youtube_dl
 
 import cgi
-import os
+
 
 # デバッグ用
 import cgitb
@@ -30,3 +30,5 @@ with youtube_dl.YoutubeDL() as ydl:
 
 print('Content-type: text/html\nAccess-Control-Allow-Origin: *\n')
 print("<p>TITLE： {}</p>".format(video_title))
+print("<p><p>")
+print('<button id="btn_get">Get youtube</button>')
