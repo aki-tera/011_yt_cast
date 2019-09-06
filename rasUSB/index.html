@@ -1,15 +1,52 @@
-<html>
+<!doctype html>
+<html lang="ja">
   <head>
+    <meta charset="UTF-8">
     <title>Podcast Creater</title>
-    <meta http-equiv="content-type" charset="utf-8">
   </head>
+
   <body>
-    <form action="http://localhost:8080/cgi-bin/yt_download.py" method="post">
+    <form id="form">
       <div>
-        <label for="yt_url">URL INPUT</label>
-        <input name="yt_url" id="yt_url" value="">
-        <button>ダウンロード</button>
+        <label>Youtube URL</label>
+        <input type="url" id="url" value="" size="50">
       </div>
+      <button type="submit" class="btn btn-primary">Get title</button>
     </form>
+    <div id="result">
+    </div>
+
+
+<!--jqueryの開始-->
+<!--jqueryのダウンロード-->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript">
+<!--htmlファイルの読み込み後に以下を実行すること-->
+    $(document).ready(function() {
+<!--formタグを対象として処理をする-->
+      $('#form').submit(function() {
+<!--Ajaxで送信するので、通常のフォーム送信はキャンセル-->
+        event.preventDefault();
+<!--thisは現在動作している要素を示すが、なんのためか不明-->
+        var $form = $(this);
+<!--送信する内容-->
+        $.ajax({
+          url: '/cgi-bin/yt_check.py',
+          type: 'post',
+          dataType: 'text',
+          data: {
+            url: $('#url').val(),
+          },
+        })
+<!--非同期通信のまま返り値をもらう-->
+        .done(function(response) {
+          $('#result').html(response);
+        })
+        .fail(function() {
+          $('#result').html('Failed.');
+        });
+      });
+    });
+    </script>
   </body>
 </html>
