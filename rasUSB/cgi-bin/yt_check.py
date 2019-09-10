@@ -29,6 +29,6 @@ with youtube_dl.YoutubeDL() as ydl:
     video_title = info_dict.get('title', None)
 
 print('Content-type: text/html\nAccess-Control-Allow-Origin: *\n')
-print("<p>TITLE： {}</p>".format(video_title))
-print("<p><p>")
-print('<button id="btn_get">Get youtube</button>')
+print('<p id="title_name">{}</p>'.format(video_title))
+print('<p><p>')
+print('<button id="get_youtube">GET</button>')
