@@ -63,7 +63,7 @@ h1{
   border: dashed 1px #FFF;
   transition: .4s;
 }
-#get_title:hover {
+#get_youtube:hover {
   background: #668ad8;
   box-shadow: 0px 0px 0px 5px #668ad8;
 }
