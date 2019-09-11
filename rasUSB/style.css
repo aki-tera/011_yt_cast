@@ -68,3 +68,8 @@ h1{
   background: #668ad8;
   box-shadow: 0px 0px 0px 5px #668ad8;
 }
+
+#result2{
+  font-size:2em;
+  color:#333333;
+}

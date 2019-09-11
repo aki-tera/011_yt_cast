@@ -2,7 +2,6 @@
 # -*- coding:utf-8 -*-
 
 import youtube_dl
-
 import cgi
 
 
@@ -31,4 +30,5 @@ with youtube_dl.YoutubeDL() as ydl:
 print('Content-type: text/html\nAccess-Control-Allow-Origin: *\n')
 print('<p id="title_name">{}</p>'.format(video_title))
 print('<p><p>')
-print('<button id="get_youtube">GET</button>')
+print('<button type="submit" id="get_youtube">GET</button>')
+print('<div id="result2">\n</div>')
