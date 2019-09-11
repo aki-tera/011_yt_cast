@@ -56,26 +56,6 @@
         });
       });
     });
-<!--追加されたボタンの処理-->
-    $(document).ajaxComplete(function(){
-      $('#get_youtube').on('click', function() {
-        var test = $('#input_url').val();
-        $.ajax({
-          url: '/cgi-bin/yt_download.py',
-          type: 'post',
-          dataType: 'text',
-          data: {
-            url: $('#input_url').val(),
-            },
-        })
-        .done(function(response) {
-          $('#result2').html(response);
-        })
-        .fail(function() {
-          $('#result2').html('ダウンロードできませんでした');
-        });
-      });
-    });
     </script>
   </body>
 </html>

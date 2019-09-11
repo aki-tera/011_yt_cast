@@ -30,5 +30,7 @@ with youtube_dl.YoutubeDL() as ydl:
 print('Content-type: text/html\nAccess-Control-Allow-Origin: *\n')
 print('<p id="title_name">{}</p>'.format(video_title))
 print('<p><p>')
-print('<button type="submit" id="get_youtube">GET</button>')
+print('<form action="/cgi-bin/yt_download.py" method="POST">')
+print('<button type="submit" id="get_youtube" name="submit" value="{}">GET</button>'.format(url))
+print('</form>')
 print('<div id="result2">\n</div>')

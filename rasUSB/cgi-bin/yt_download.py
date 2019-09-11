@@ -17,7 +17,7 @@ sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 
 form = cgi.FieldStorage()
-url = form.getfirst("url")
+url = form.getvalue("submit")
 
 
 #出力ファイル名
