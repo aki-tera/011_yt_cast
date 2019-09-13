@@ -23,7 +23,7 @@ url = form.getvalue("submit")
 #出力ファイル名
 outtmpl = "%(title)s.%(ext)s"
 #出力フォルダ
-down_dir = "\\..\\download\\"
+down_dir = "\\..\\podcast\\"
 ydl_opts = {"outtmpl": down_dir+outtmpl}
 
 #実際のダウンロード処理
