@@ -24,10 +24,12 @@ url = form.getvalue("submit")
 outtmpl = "%(title)s.%(ext)s"
 #出力フォルダ
 down_dir = "\\..\\download\\"
-udl_opts = {"outtmpl": down_dir+outtmpl}
+ydl_opts = {"outtmpl": down_dir+outtmpl}
+
 #実際のダウンロード処理
-with youtube_dl.YoutubeDL(udl_opts) as ydl:
+with youtube_dl.YoutubeDL(ydl_opts) as ydl:
     ydl.download([url])
+
 
 
 html_body = """
