@@ -29,5 +29,23 @@ udl_opts = {"outtmpl": down_dir+outtmpl}
 with youtube_dl.YoutubeDL(udl_opts) as ydl:
     ydl.download([url])
 
-print('Content-type: text/html\nAccess-Control-Allow-Origin: *\n')
-print('<p>ダウンロードてきました<p>')
+
+html_body = """
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Podcast Creater</title>
+<link rel='stylesheet' href='../CSS/style_cgi.css'>
+</head>
+<body>
+<h1>Download complete</h1>
+<p>
+<p>
+<input type='button' id='return_page' value='Return Top Page' onClick='document.location="../index.html";'>
+</body>
+</html>
+"""
+
+
+print(html_body)
