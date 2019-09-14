@@ -19,11 +19,10 @@ sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 form = cgi.FieldStorage()
 url = form.getvalue("submit")
 
-
 #出力ファイル名
 outtmpl = "%(title)s.%(ext)s"
 #出力フォルダ
-down_dir = "\\..\\podcast\\"
+down_dir = "podcast/"
 ydl_opts = {"outtmpl": down_dir+outtmpl}
 
 #実際のダウンロード処理

@@ -51,11 +51,11 @@ h1{
 #get_youtube{
   display: inline-block;
   text-decoration: none;
-  font-size:2em;
+  font-size:2.2em;
   background: #87befd;
   color: #FFF;
-  width: 200px;
-  height: 200px;
+  width: 300px;
+  height: 300px;
   line-height: 120px;
   border-radius: 50%;
   text-align: center;
