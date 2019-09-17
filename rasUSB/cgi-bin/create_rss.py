@@ -6,8 +6,8 @@ import os
 from email import utils
 
 
-rss_1='''
-<?xml version="1.0" encoding="utf-8"?>
+
+rss_1='''<?xml version="1.0" encoding="utf-8"?>
 <rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" version="2.0">
   <channel>
     <title>我が家のPodcast</title>
@@ -18,10 +18,7 @@ rss_1='''
 rss_2='''
       <item>
         <title>{0}</title>
-        <enclosure url={1}
-                 length={2}
-                 type="audio/mp4"
-        />
+        <enclosure url="{1}" length="{2}" type="audio/mp4"/>
         <guid isPermaLink="true">{1}</guid>
         <pubDate>{3}</pubDate>
       </item>'''
@@ -46,7 +43,7 @@ def create_folder(CF_path, CF_image_path):
             file_name.append(temp)
             file_size.append(os.path.getsize(CF_path+"/"+file_name[0]))
 
-            file_time.append((utils.formatdate(os.path.getmtime(CF_path+"/"+file_name[0])))[:-4])
+            file_time.append(utils.formatdate(os.path.getmtime(CF_path+"/"+file_name[0])))
 
     print(file_name[0], file_size[0], file_time[0])
 
@@ -55,15 +52,16 @@ def create_folder(CF_path, CF_image_path):
     CF_rss = CF_rss + rss_3
 
     print(CF_rss)
+    print(CF_path+"/"+"movie.rss")
 
-    f = open(CF_path+"/"+"movie.rss", "w" )
+    f = open(CF_path+"/"+"movie.rss", "w", encoding='utf-8')
     f.write(CF_rss)
     f.close()
 
 
 def main():
     path="../podcast"
-    image_path = "192.168.11.9:8080/podcast"
+    image_path = "192.168.11.9:8080/art-work"
     create_folder(path, image_path)
 
     return
