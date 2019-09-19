@@ -6,9 +6,15 @@
     <itunes:image href="http://192.168.11.9:8080/art-work/001.png"/>
     <itunes:category text="youtube"/>
       <item>
-        <title>movie01.mp4</title>
-        <enclosure url="/podcast/movie01.mp4" length="2770460" type="audio/mp4"/>
-        <guid isPermaLink="true">/podcast/movie01.mp4</guid>
+        <title>test01.mp4</title>
+        <enclosure url="http://192.168.11.9:8080/podcast/test01.mp4" length="2770460" type="video/mp4"/>
+        <guid isPermaLink="true">http://192.168.11.9:8080/podcast/test01.mp4</guid>
+        <pubDate>Tue, 10 Sep 2019 02:29:47 -0000</pubDate>
+      </item>
+      <item>
+        <title>test02.mp4</title>
+        <enclosure url="http://192.168.11.9:8080/podcast/test02.mp4" length="2770460" type="video/mp4"/>
+        <guid isPermaLink="true">http://192.168.11.9:8080/podcast/test02.mp4</guid>
         <pubDate>Tue, 10 Sep 2019 02:29:47 -0000</pubDate>
       </item>
   </channel>
