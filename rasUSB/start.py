@@ -11,7 +11,7 @@ import os
 
 # RasPiのIPアドレスは書かなくても良い
 host = ""
-port = 8080
+port = 8081
 httpd = HTTPServer((host, port), CGIHTTPRequestHandler)
 print('serving at port', port)
 httpd.serve_forever()
