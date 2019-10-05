@@ -66,8 +66,8 @@ def create_folder(CF_local_path, CF_url_path, CF_image_path):
 
 def main():
     local_path = "../podcast/"
-    url_path = "http://192.168.11.9:8081"
-    image_path = "192.168.11.9:8081/art-work/001.png"
+    url_path = "http://192.168.11.9:8080"
+    image_path = "192.168.11.9:8080/art-work/001.png"
     create_folder(local_path, url_path, image_path)
 
     return
