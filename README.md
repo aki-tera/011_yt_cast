@@ -43,6 +43,13 @@ https://qiita.com/akinko/items/74886ad84fed0ee10044
 https://tech.matchy.net/archives/237
 
 
+xml操作
+https://pg-chain.com/python-xml-elementtree
+
+最新のファイル取得
+https://off.tokyo/blog/how-to-get-the-latest-file-in-a-folder-using-python/
+
+
 
 <?xml version="1.0" encoding="utf-8"?>
 <rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" version="2.0">
