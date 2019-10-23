@@ -11,6 +11,7 @@ cgitb.enable()
 import sys
 import io
 
+import xml.etree.ElementTree as ET
 
 #youtubeのダウンロード
 import youtube_dl
@@ -19,6 +20,11 @@ import youtube_dl
 import glob
 import os
 
+#現在時刻を取得、時間の形式はRFC 2822
+import time
+from email import utils
+
+import codecs
 
 
 
@@ -77,9 +83,9 @@ def rss_checker(RC_rss_path):
         tree = ET.parse(RC_rss_path)
         root = tree.getroot()
         #XPathでtitle数をカウントする
-        counter = len(root.findall("./*/*/title"))
+        counter = len(root.findall("./*/*/title"))+1
     except:
-        counter = 0
+        counter = 1
         #movie.rssファイルを生成する
 
     return(str(counter).zfill(3))
@@ -98,37 +104,42 @@ def yt_download(YT_url, YT_ydl_opts, YT_down_dir):
     #getctimeで最新作成時のファイルを得る
     latest_file = max(list_of_files, key=os.path.getctime)
 
+    file_size = os.path.getsize(latest_file)
+
+    file_type = {"mp4":"video/mp4", "mp3":"audio/mp3"}[latest_file[-3:]]
+
+    file_time = utils.formatdate(time.time())
+
     #ファイル名とタイトル
-    return(latest_file, video_title, video_description)
+    return(latest_file, video_title, video_description, file_size, file_type, file_time)
 
 
-def rss_modify(RM_rss_path, RM_podcast_data):
+def rss_modify(RM_rss_path, RM_data):
 
     #ファイルサイズ取得
     #現在の時間をタイムとする
 
     with codecs.open(RM_rss_path, "r", "utf-8") as f:
-    line = f.readlines()
+        line = f.readlines()
     count = 0
     for temp in line:
         count = count +1
         print(type(temp))
         if '<itunes:category text="youtube"/>' in temp:
-            print(temp)
             line.insert(count+0, '      <item>\n')
-            line.insert(count+1, '        <title>'+RM_podcast_data[1]+'</title>\n')
-            line.insert(count+2, '        <description>')
-            line.insert(count+3, '        <enclosure url="http://192.168.11.9:8080/'+RM_podcast_data[0]'+'" length="2770460" type="video/mp4"/>')
-            line.insert(count+4, '        <guid isPermaLink="true">http://192.168.11.9:8080/'+RM_podcast_data[0]'+'</guid>')
-            line.insert(count+4, '        <pubDate>Tue, 10 Sep 2019 02:29:47 -0000</pubDate>')
-            line.insert(count+2, '      </item>\n')
+            line.insert(count+1, '        <title>'+RM_data[1]+'</title>\n')
+            line.insert(count+2, '        <description>'+RM_data[2]+'</description>\n')
+            line.insert(count+3, '        <enclosure url="http://192.168.11.9:8080/'+RM_data[0]+'" length="'+str(RM_data[3])+'" type="'+RM_data[4]+'"/>\n')
+            line.insert(count+4, '        <guid isPermaLink="true">http://192.168.11.9:8080/'+RM_data[0]+'</guid>\n')
+            line.insert(count+5, '        <pubDate>'+RM_data[5]+'</pubDate>\n')
+            line.insert(count+6, '      </item>\n')
             break
         else:
             continue
         break
 
-    with codecs.open(path1, "w", "utf-8") as ff:
-        ff.writelines(line)
+    with codecs.open(RM_rss_path, "w", "utf-8") as f:
+        f.writelines(line)
 
 
 
@@ -159,9 +170,9 @@ def main():
 
 
     #rssに新しいファイルを追加する
-    rss_modify(results)
+    rss_modify("podcast/movie.rss", results)
 
-    print(html_body1+str(results)+html_body2)
+    print(html_body)
 
     return
 
