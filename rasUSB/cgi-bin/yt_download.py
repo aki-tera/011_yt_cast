@@ -76,15 +76,12 @@ def rss_checker(RC_rss_path):
     try:
         tree = ET.parse(RC_rss_path)
         root = tree.getroot()
-        counter = 1
-        for child in root:
-            for child1 in child:
-                for child2 in child1:
-                    if child2.tag == "title":
-                        counter = counter + 1
+        #XPathでtitle数をカウントする
+        counter = len(root.findall("./*/*/title"))
     except:
         counter = 0
         #movie.rssファイルを生成する
+
     return(str(counter).zfill(3))
 
 
@@ -130,7 +127,7 @@ def rss_modify(RM_rss_path, RM_podcast_data):
             continue
         break
 
-    with codecs.open(path1, 'w', 'utf-8') as ff:
+    with codecs.open(path1, "w", "utf-8") as ff:
         ff.writelines(line)
 
 
