@@ -149,7 +149,10 @@ def main():
 
     #postからurlを取得する
     form = cgi.FieldStorage()
-    url = form.getvalue("submit")
+    #オプション付きURLの場合に備えて、＆以降はカットする
+    url_long = form.getvalue("submit")
+    url = url_long.split("&", 1)[0]
+
 
     #rssから現在のitem数をカウントする
     #戻り値はカウント数
