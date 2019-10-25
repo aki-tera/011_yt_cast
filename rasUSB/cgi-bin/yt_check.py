@@ -18,7 +18,10 @@ sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 
 form = cgi.FieldStorage()
-url = form.getfirst("url")
+
+#オプション付きURLの場合に備えて、＆以降はカットする
+url_long = form.getfirst("url")
+url = url_long.split("&",1)[0]
 #sequence_list = []
 
 
