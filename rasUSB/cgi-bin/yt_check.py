@@ -21,7 +21,7 @@ form = cgi.FieldStorage()
 
 #オプション付きURLの場合に備えて、＆以降はカットする
 url_long = form.getfirst("url")
-url = url_long.split("&",1)[0]
+url = url_long.split("&", 1)[0]
 #sequence_list = []
 
 
