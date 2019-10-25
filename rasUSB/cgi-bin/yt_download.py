@@ -11,6 +11,7 @@ cgitb.enable()
 import sys
 import io
 
+#rssのタグチェック
 import xml.etree.ElementTree as ET
 
 #youtubeのダウンロード
@@ -24,6 +25,7 @@ import os
 import time
 from email import utils
 
+#ファイルの入出力をutf-8にする
 import codecs
 
 
@@ -44,25 +46,6 @@ html_body = """
 </body>
 </html>
 """
-
-html_body1 = """
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Podcast Creater</title>
-<link rel='stylesheet' href='../CSS/style_cgi.css'>
-</head>
-<body>
-"""
-
-html_body2 = """
-<p>
-<input type='button' id='return_page' value='Return Top Page' onClick='document.location="../index.html";'>
-</body>
-</html>
-"""
-
 
 
 def rss_checker(RC_rss_path):
@@ -86,7 +69,8 @@ def rss_checker(RC_rss_path):
         counter = len(root.findall("./*/*/title"))+1
     except:
         counter = 1
-        #movie.rssファイルを生成する
+        #（将来対応）
+        #movie.rssファイルが無いので、ファイルを生成する
 
     return(str(counter).zfill(3))
 
@@ -99,32 +83,28 @@ def yt_download(YT_url, YT_ydl_opts, YT_down_dir):
         video_description = info_dict.get("description", None)
         ydl.download([YT_url])
 
+    #ファイルの詳細情報を入手する
+
     #ダウンロードしたファイル名+拡張子を取得
-    list_of_files = glob.glob(YT_down_dir+"*")
     #getctimeで最新作成時のファイルを得る
+    list_of_files = glob.glob(YT_down_dir+"*")
     latest_file = max(list_of_files, key=os.path.getctime)
-
     file_size = os.path.getsize(latest_file)
-
+    #新しい拡張があれば追加する
     file_type = {"mp4":"video/mp4", "mp3":"audio/mp3"}[latest_file[-3:]]
-
+    #登録する日時は現在のものとする
     file_time = utils.formatdate(time.time())
 
-    #ファイル名とタイトル
     return(latest_file, video_title, video_description, file_size, file_type, file_time)
 
 
 def rss_modify(RM_rss_path, RM_data):
-
-    #ファイルサイズ取得
-    #現在の時間をタイムとする
-
+    #rssを開く
     with codecs.open(RM_rss_path, "r", "utf-8") as f:
         line = f.readlines()
     count = 0
     for temp in line:
         count = count +1
-        print(type(temp))
         if '<itunes:category text="youtube"/>' in temp:
             line.insert(count+0, '      <item>\n')
             line.insert(count+1, '        <title>'+RM_data[1]+'</title>\n')
@@ -154,15 +134,13 @@ def main():
     url = url_long.split("&", 1)[0]
 
 
-    #rssから現在のitem数をカウントする
-    #戻り値はカウント数
-    #出力ファイル名
+    #出力ファイルを連番にするため、rssから現在のitem数をカウントする
     outtmpl = "podcast"+rss_checker("podcast/movie.rss")+".%(ext)s"
     #出力フォルダ
     down_dir = "podcast/"
     ydl_opts = {"outtmpl": down_dir+outtmpl}
 
-    #将来対応項目
+    #（将来対応）
     #podcastフォルダ内にファイルが多数あれば、削除する
     #check_file(folder_path, max_fail)
 
@@ -179,7 +157,6 @@ def main():
 
     return
 
-#if __name__ == "__main__":
-#    main()
+#実行のメイン
 
 main()
