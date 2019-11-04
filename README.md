@@ -1,4 +1,5 @@
 # 011_yt_cast
+Create iPhone podcast RSS feed 
 
 
 参考url
@@ -48,27 +49,3 @@ https://pg-chain.com/python-xml-elementtree
 
 最新のファイル取得
 https://off.tokyo/blog/how-to-get-the-latest-file-in-a-folder-using-python/
-
-
-
-<?xml version="1.0" encoding="utf-8"?>
-<rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" version="2.0">
-  <channel>
-    <title>我が家のPodcast</title>
-    <itunes:owner/>
-    <itunes:image href="http://#{host_ip}/podcast/001.png"/>
-    <itunes:category text="youtube"/>
-      <item>
-        <title>Youtubeのタイトル</title>
-        <enclosure url="/podcast/sample.mp4"
-                 length="ファイルサイズ"
-                 type="audio/mp4"
-        />
-        <guid isPermaLink="true">/download/sample.mp4</guid>
-        <pubDate>Wed, 15 Jun 2019 19:00:00 GMT</pubDate>    rfc822に変換する
-      </item>
-      <item>
-        別のファイル
-      </item>
-  </channel>
-</rss>
