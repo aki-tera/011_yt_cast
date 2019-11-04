@@ -76,30 +76,6 @@ def rss_checker(RC_rss_path):
 
 
 def yt_download(YT_url, YT_ydl_opts, YT_down_dir):
-<<<<<<< HEAD
-        """
-        指定のurlを指定のフォルダにダウンロードする
-        ファイル名等はオプション指示となる
-        Parameters
-        ----------
-        YT_url:string
-            url
-        YT_ydl_opts:dictionary
-            options for youtube_dl
-        YT_down_dir:string
-            download path
-
-        Returns
-        ----------
-        counter:tuple
-            download file
-            title
-            description
-            file size
-            file type
-            time stamp
-        """
-=======
     """
     指定のurlを指定のフォルダにダウンロードする
     ファイル名等はオプション指示となる
@@ -122,7 +98,6 @@ def yt_download(YT_url, YT_ydl_opts, YT_down_dir):
         file type
         time stamp
     """
->>>>>>> develop
     #実際のダウンロード処理
     with youtube_dl.YoutubeDL(YT_ydl_opts) as ydl:
         info_dict = ydl.extract_info(YT_url, download=False)
