@@ -1,6 +1,24 @@
 # 011_yt_cast
-Create iPhone podcast RSS feed 
+Create iPhone podcast RSS feed
 
+***
+This program can download from Video(can be downloaded  by youtube_dl) and can create iPhone podcast RSS feed.
+
+***
+I ran this program with the following execution environment.
+
+Raspberry Pi 3
+1. python 3.6
+0. apatch2 for podcast server
+0. python's simple server
+
+***
+Future plan
+1. login function
+0. delete files if your computer is Insufficient memory
+0. It will be possible to run only on the Apache server. Currently, youtube_dl cannot run Apache server.
+
+***
 
 参考url
 
