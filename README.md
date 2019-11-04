@@ -1,5 +1,24 @@
 # 011_yt_cast
+Create iPhone podcast RSS feed
 
+***
+This program can download from Video(can be downloaded  by youtube_dl) and can create iPhone podcast RSS feed.
+
+***
+I ran this program with the following execution environment.
+
+Raspberry Pi 3
+1. python 3.6
+0. apatch2 for podcast server
+0. python's simple server
+
+***
+Future plan
+1. login function
+0. delete files if your computer is Insufficient memory
+0. It will be possible to run only on the Apache server. Currently, youtube_dl cannot run Apache server.
+
+***
 
 参考url
 
@@ -48,27 +67,3 @@ https://pg-chain.com/python-xml-elementtree
 
 最新のファイル取得
 https://off.tokyo/blog/how-to-get-the-latest-file-in-a-folder-using-python/
-
-
-
-<?xml version="1.0" encoding="utf-8"?>
-<rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" version="2.0">
-  <channel>
-    <title>我が家のPodcast</title>
-    <itunes:owner/>
-    <itunes:image href="http://#{host_ip}/podcast/001.png"/>
-    <itunes:category text="youtube"/>
-      <item>
-        <title>Youtubeのタイトル</title>
-        <enclosure url="/podcast/sample.mp4"
-                 length="ファイルサイズ"
-                 type="audio/mp4"
-        />
-        <guid isPermaLink="true">/download/sample.mp4</guid>
-        <pubDate>Wed, 15 Jun 2019 19:00:00 GMT</pubDate>    rfc822に変換する
-      </item>
-      <item>
-        別のファイル
-      </item>
-  </channel>
-</rss>
