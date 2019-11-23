@@ -1,33 +1,6 @@
 ﻿<!doctype html>
 
 
-<script type="text/javascript">
-    function init() {
-        var paraPair  = new Array();                         // 行Ａ
-        var paraName  = new Array();
-        var paraValue = new Array();
-
-        var パラメタ部分 = location.search.split("?")[1];
-        var para = パラメタ部分.split("&");                  // 行Ｂ
-        var パラメタ数 = para.length;
-
-        for (var i = 0; i <パラメタ数; i++) {                // 行Ｃ
-            paraPair = para[i].split("=");                   // 行Ｄ
-            paraName[i]  = decodeURIComponent(paraPair[0]);
-            paraValue[i] = decodeURIComponent(paraPair[1]);
-        }
-
-        var 結果 = "";
-        for (i = 0; i < パラメタ数; i++) {
-            結果 +=  "paraName["  + i + "] = " + paraName[i]
-                 + ",　paraValue["  + i + "] = "  + paraValue[i] + "<br>";
-        }
-        document.getElementById('表示場所').innerHTML = 結果;
-
-    }
-</script>
-
-
 <html lang="ja">
   <head>
     <meta charset="UTF-8">
@@ -41,10 +14,6 @@
         <h1>Youtube URL</h1>
         <p>リンクを入力してボタンを押す</p>
         <p>タイトルが問題無ければ、ダウンロードボタンを押す</p>
-
-        <body onLoad="init()">
-          <div id="表示場所" class="red"></div>
-
         <p>
           <input type="url" id="input_url" value="" placeholder="https://">
         </p>
