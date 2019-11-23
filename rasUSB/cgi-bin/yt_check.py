@@ -9,12 +9,14 @@ import cgi
 import cgitb
 cgitb.enable()
 
+#ファイルの入出力をutf-8にする
+import codecs
+
 
 #PythonのCGIスクリプトから出力したHTMLの日本語文字化け防止
 import sys
 import io
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
-
 
 
 form = cgi.FieldStorage()
@@ -24,9 +26,19 @@ url_long = form.getfirst("url")
 url = url_long.split("&", 1)[0]
 #sequence_list = []
 
+#ユーザ情報の入手
+try:
+    with codecs.open("user_name.txt", "r", "utf-8") as f:
+        line = f.readlines()
+        user_name = line[0].rstrip("\n\r")
+        user_pass = line[1].rstrip("\n\r")
+except:
+    user_name = ""
+    user_pass = ""
+
 
 #タイトルチェック
-with youtube_dl.YoutubeDL() as ydl:
+with youtube_dl.YoutubeDL({"username":user_name, "password":user_pass}) as ydl:
     info_dict = ydl.extract_info(url, download=False)
     video_title = info_dict.get('title', None)
 
