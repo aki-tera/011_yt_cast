@@ -172,12 +172,22 @@ def main():
     url_long = form.getvalue("submit")
     url = url_long.split("&", 1)[0]
 
+    #ユーザ情報の入手
+    try:
+        with codecs.open("cgi-bin/user_name.txt", "r", "utf-8") as f:
+            line = f.readlines()
+            user_name = line[0].rstrip("\n\r")
+            user_pass = line[1].rstrip("\n\r")
+    except:
+        user_name = ""
+        user_pass = ""
+
 
     #出力ファイルを連番にするため、rssから現在のitem数をカウントする
     outtmpl = "podcast"+rss_checker("podcast/movie.rss")+".%(ext)s"
     #出力フォルダ
     down_dir = "podcast/"
-    ydl_opts = {"outtmpl": down_dir+outtmpl}
+    ydl_opts = {"outtmpl": down_dir+outtmpl, "username":user_name, "password":user_pass}
 
     #（将来対応）
     #podcastフォルダ内にファイルが多数あれば、削除する

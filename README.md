@@ -67,3 +67,7 @@ https://pg-chain.com/python-xml-elementtree
 
 最新のファイル取得
 https://off.tokyo/blog/how-to-get-the-latest-file-in-a-folder-using-python/
+
+javascriptでパラメータ取得
+http://www.kogures.com/hitoshi/javascript/link-para/index.html
+http://www.kogures.com/hitoshi/javascript/link-para/link-para-receive3.html?e=abc&j=%E6%97%A5%E6%9C%AC%E8%AA%9E
