@@ -174,7 +174,7 @@ def main():
 
     #ユーザ情報の入手
     try:
-        with codecs.open("user_name.txt", "r", "utf-8") as f:
+        with codecs.open("cgi-bin/user_name.txt", "r", "utf-8") as f:
             line = f.readlines()
             user_name = line[0].rstrip("\n\r")
             user_pass = line[1].rstrip("\n\r")
