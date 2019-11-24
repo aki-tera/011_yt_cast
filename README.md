@@ -4,17 +4,22 @@ Create iPhone podcast RSS feed
 ***
 This program can download from Video(can be downloaded  by youtube_dl) and can create iPhone podcast RSS feed.
 
+function
+1. download files from youtube, niconico, etc.
+0. login if you have account.
+0. resume donwload function(if download stop, wait 60seconds and resume)
+
 ***
 I ran this program with the following execution environment.
 
 Raspberry Pi 3
 1. python 3.6
-0. apatch2 for podcast server
-0. python's simple server
+0. apatch2 for podcast server(ex:port8080)
+0. python's simple server(port8081)
 
 ***
 Future plan
-1. login function
+1. ~~login function~~(done at ver1.8)
 0. delete files if your computer is Insufficient memory
 0. It will be possible to run only on the Apache server. Currently, youtube_dl cannot run Apache server.
 
