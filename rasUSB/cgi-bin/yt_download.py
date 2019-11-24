@@ -109,10 +109,11 @@ def yt_download(YT_url, YT_ydl_opts, YT_down_dir):
     except:
         #エラーが出た際に継続処理をさせる
         YT_ydl_opts["continue"] = True
-        for i in range(100):
+        for i in range(999):
             try:
                 with youtube_dl.YoutubeDL(YT_ydl_opts) as ydl:
                     ydl.download([YT_url])
+                break
             except:
                 time.sleep(60)
 
@@ -121,7 +122,7 @@ def yt_download(YT_url, YT_ydl_opts, YT_down_dir):
 
     #ダウンロードしたファイル名+拡張子を取得
     #getctimeで最新作成時のファイルを得る
-    list_of_files = glob.glob(YT_down_dir+"*")
+    list_of_files = glob.glob(YT_down_dir+"podcast*")
     latest_file = max(list_of_files, key=os.path.getctime)
     file_size = os.path.getsize(latest_file)
     #新しい拡張があれば追加する
