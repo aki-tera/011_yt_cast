@@ -28,6 +28,8 @@ from email import utils
 #ファイルの入出力をutf-8にする
 import codecs
 
+import re
+
 
 
 html_body = """
