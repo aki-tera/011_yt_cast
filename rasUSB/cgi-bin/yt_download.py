@@ -28,6 +28,8 @@ from email import utils
 #ファイルの入出力をutf-8にする
 import codecs
 
+import re
+
 
 
 html_body = """
@@ -109,7 +111,7 @@ def yt_download(YT_url, YT_ydl_opts, YT_down_dir):
     except:
         #エラーが出た際に継続処理をさせる
         YT_ydl_opts["continue"] = True
-        for i in range(999):
+        for i in range(100):
             try:
                 with youtube_dl.YoutubeDL(YT_ydl_opts) as ydl:
                     ydl.download([YT_url])
@@ -119,6 +121,8 @@ def yt_download(YT_url, YT_ydl_opts, YT_down_dir):
 
 
     #ファイルの詳細情報を入手する
+    #aタグや全角スペースの削除、改行追加
+    video_description = re.sub("<a.*?>|</a>|\u3000", " ", video_description).replace("<br />", "<br>").replace("<br>", "\n")
 
     #ダウンロードしたファイル名+拡張子を取得
     #getctimeで最新作成時のファイルを得る
