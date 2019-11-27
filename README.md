@@ -2,12 +2,23 @@
 Create iPhone podcast RSS feed
 
 ***
-This program can download from Video(can be downloaded  by youtube_dl) and can create iPhone podcast RSS feed.
+This program can download from Video(can be downloaded  by youtube_dl) by your browser and can create iPhone podcast RSS feed.
 
 function
 1. download files from youtube, niconico, etc.
 0. login if you have account.
 0. resume donwload function(if download stop, wait 60seconds and resume)
+
+How to use
+1. Run "start.py".
+0. Run server program(ex:Apache) and set 8080 to listen of server's config.  
+0. Enter the URL in the browser.  
+   ex1)loacalhost:8080 (If "satrt.py" is running on the same PC)  
+   ex2)192.168.1.10:8080(If "start.py" in runnnig on the another PC whchi is 192.168.1.10)  
+0. Enter the URL you want to download and click "Get title".  
+0. If you can show download's title, click "download".
+0. Download complete, click "Return top page".
+
 
 ***
 I ran this program with the following execution environment.
