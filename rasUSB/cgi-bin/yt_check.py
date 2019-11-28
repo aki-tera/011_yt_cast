@@ -38,7 +38,8 @@ except:
 
 
 #タイトルチェック
-with youtube_dl.YoutubeDL({"username":user_name, "password":user_pass}) as ydl:
+#quietオプションをONにして表示をなくす（apacheサーバのエラーが無くなる？）
+with youtube_dl.YoutubeDL({"username":user_name, "password":user_pass, "quiet":True}) as ydl:
     info_dict = ydl.extract_info(url, download=False)
     video_title = info_dict.get('title', None)
 
