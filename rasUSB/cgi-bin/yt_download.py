@@ -204,7 +204,8 @@ def main():
     outtmpl = "podcast"+rss_checker("podcast/movie.rss")+".%(ext)s"
     #出力フォルダ
     down_dir = "podcast/"
-    ydl_opts = {"outtmpl": down_dir+outtmpl, "username":user_name, "password":user_pass}
+    #quietオプションをONにして表示をなくす（apacheサーバのエラーが無くなる？）
+    ydl_opts = {"outtmpl": down_dir+outtmpl, "username":user_name, "password":user_pass, "quiet":True}
 
     #（将来対応）
     #podcastフォルダ内にファイルが多数あれば、削除する
