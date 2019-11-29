@@ -220,6 +220,9 @@ def main():
     #rssに新しいファイルを追加する
     rss_modify("../podcast/movie.rss", results)
 
+    #apache2では以下の2行が必要
+    print("Content-Type: text/html")
+    print()
     print(html_body)
 
     return
