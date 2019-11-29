@@ -7,7 +7,7 @@ import cgi
 
 # デバッグ用
 import cgitb
-cgitb.enable(display=0、logdir="/podcast/")
+cgitb.enable(display=0, logdir="/podcast/")
 
 #ファイルの入出力をutf-8にする
 import codecs
