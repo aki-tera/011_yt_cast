@@ -218,7 +218,7 @@ def main():
 
 
     #rssに新しいファイルを追加する
-    rss_modify("../podcast/movie.rss", results)
+    rss_modify("podcast/movie.rss", results)
 
     print(html_body)
 
