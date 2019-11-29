@@ -5,7 +5,7 @@ import cgi
 
 # デバッグ用
 import cgitb
-cgitb.enable(display=0、logdir="/podcast/")
+cgitb.enable(display=0, logdir="/podcast/")
 
 #PythonのCGIスクリプトから出力したHTMLの日本語文字化け防止
 import sys
