@@ -165,8 +165,8 @@ def rss_modify(RM_rss_path, RM_data):
             line.insert(count+0, '      <item>\n')
             line.insert(count+1, '        <title>'+RM_data[1]+'</title>\n')
             line.insert(count+2, '        <description>'+RM_data[2]+'</description>\n')
-            line.insert(count+3, '        <enclosure url="http://192.168.11.9:8080/'+RM_data[0]+'" length="'+str(RM_data[3])+'" type="'+RM_data[4]+'"/>\n')
-            line.insert(count+4, '        <guid isPermaLink="true">http://192.168.11.9:8080/'+RM_data[0]+'</guid>\n')
+            line.insert(count+3, '        <enclosure url="http://192.168.11.9:8080/'+RM_data[0][3:]+'" length="'+str(RM_data[3])+'" type="'+RM_data[4]+'"/>\n')
+            line.insert(count+4, '        <guid isPermaLink="true">http://192.168.11.9:8080/'+RM_data[0][3:]+'</guid>\n')
             line.insert(count+5, '        <pubDate>'+RM_data[5]+'</pubDate>\n')
             line.insert(count+6, '      </item>\n')
             break
@@ -218,7 +218,7 @@ def main():
 
 
     #rssに新しいファイルを追加する
-    rss_modify("podcast/movie.rss", results)
+    rss_modify("../podcast/movie.rss", results)
 
     print(html_body)
 
