@@ -7,7 +7,7 @@ import cgi
 
 # デバッグ用
 import cgitb
-cgitb.enable(display=0, logdir="/podcast/")
+cgitb.enable(display=0, logdir="../podcast/")
 
 #ファイルの入出力をutf-8にする
 import codecs
@@ -28,7 +28,7 @@ url = url_long.split("&", 1)[0]
 
 #ユーザ情報の入手
 try:
-    with codecs.open("/cgi-bin/user_name.txt", "r", "utf-8") as f:
+    with codecs.open("user_name.txt", "r", "utf-8") as f:
         line = f.readlines()
         user_name = line[0].rstrip("\n\r")
         user_pass = line[1].rstrip("\n\r")
