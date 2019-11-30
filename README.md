@@ -33,7 +33,7 @@ Raspberry Pi 3
 Future plan
 1. ~~login function~~(done at ver1.8)
 0. delete files if your computer is Insufficient memory.
-0. ~~It will be possible to run only on the Apache server. Currently, youtube_dl cannot run Apache server.~~
+0. ~~It will be possible to run only on the Apache server. Currently, youtube_dl cannot run Apache server.~~(done at ver3.0)
 0. create rss file if there isn't.
 
 ***
