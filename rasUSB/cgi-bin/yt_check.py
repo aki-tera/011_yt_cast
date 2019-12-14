@@ -12,6 +12,8 @@ cgitb.enable(display=0, logdir="../podcast/")
 #ファイルの入出力をutf-8にする
 import codecs
 
+import re
+
 
 #PythonのCGIスクリプトから出力したHTMLの日本語文字化け防止
 import sys
@@ -26,7 +28,7 @@ url_long = form.getfirst("url")
 url = url_long.split("&", 1)[0]
 
 #youtube_dlのオプション設定をする
-ydl_opts = {"quiet":False}
+ydl_opts = {"quiet":True}
 
 #ユーザ情報の入手
 with codecs.open("user_name.txt", "r", "utf-8") as f:
