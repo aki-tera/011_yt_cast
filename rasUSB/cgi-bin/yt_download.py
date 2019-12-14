@@ -189,23 +189,28 @@ def main():
     url_long = form.getvalue("submit")
     url = url_long.split("&", 1)[0]
 
+    #youtube_dlのオプション設定をする
+    ydl_opts = {"quiet":False}
+
     #ユーザ情報の入手
-    try:
-        with codecs.open("user_name.txt", "r", "utf-8") as f:
-            line = f.readlines()
-            user_name = line[0].rstrip("\n\r")
-            user_pass = line[1].rstrip("\n\r")
-    except:
-        user_name = ""
-        user_pass = ""
+    with codecs.open("user_name.txt", "r", "utf-8") as f:
+        line = f.readlines()
+        for temp in line:
+            #コメントは除外する
+            if temp[:1] != "#":
+                #区切り文字を使って要素を分割する
+                user_info = temp.split(":")
+                if re.split("/+", url)[1] == user_info[0]:
+                    ydl_opts["username"] = user_info[1].rstrip("\n\r")
+                    ydl_opts["password"] = user_info[2].rstrip("\n\r")
 
 
     #出力ファイルを連番にするため、rssから現在のitem数をカウントする
     outtmpl = "podcast"+rss_checker("../podcast/movie.rss")+".%(ext)s"
     #出力フォルダ
     down_dir = "../podcast/"
-    #quietオプションをONにして表示をなくす（apacheサーバのエラーが無くなる？）
-    ydl_opts = {"outtmpl": down_dir+outtmpl, "username":user_name, "password":user_pass, "quiet":True}
+    #出力ファイル名をオプション変数（辞書）に登録する
+    ydl_opts["outtmpl"] = down_dir+outtmpl
 
     #（将来対応）
     #podcastフォルダ内にファイルが多数あれば、削除する
