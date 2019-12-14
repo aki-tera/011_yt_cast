@@ -6,11 +6,12 @@ This program can download from Video(can be downloaded  by youtube_dl) by your b
 
 function
 1. download files from youtube, niconico, etc.
-0. login if you have account.
+0. login if you have account for each services.
 0. resume donwload function(if download stop, wait 60seconds and auto resume)
 
 How to use
 1. ~~Run "start.py".~~
+0. Enter url domain name(ex:https://www.youtube.com/watch?v=999 -> www.youtube.com) and login name, password.
 0. Run server program(ex:Apache) and set 8080 to listen of server's config.  
 0. Enter the URL in the browser.  
    ex1)loacalhost:8080 (If "Apache" is running on the same PC)  
