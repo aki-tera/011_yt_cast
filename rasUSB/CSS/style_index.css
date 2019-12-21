@@ -43,6 +43,10 @@ h1{
   background: #fffbef;
 }
 
+#login_name{
+  background: linear-gradient(transparent 50%, #a8eaff 50%);
+}
+
 #title_name{
   font-size:2em;
   color:#333333;

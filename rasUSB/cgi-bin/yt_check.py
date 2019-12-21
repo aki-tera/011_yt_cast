@@ -50,6 +50,11 @@ with youtube_dl.YoutubeDL(ydl_opts) as ydl:
     video_title = info_dict.get('title', None)
 
 print('Content-type: text/html\nAccess-Control-Allow-Origin: *\n')
+
+#ユーザが指定されている場合表示を追加する
+if ("username" in ydl_opts) == True:
+    print('<p id="login_name">{}</p>'.format(ydl_opts["username"]))
+
 print('<p id="title_name">{}</p>'.format(video_title))
 print('<p><p>')
 print('<form action="/cgi-bin/yt_download.py" method="POST">')
