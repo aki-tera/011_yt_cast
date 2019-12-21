@@ -177,7 +177,22 @@ def rss_modify(RM_rss_path, RM_data):
     with codecs.open(RM_rss_path, "w", "utf-8") as f:
         f.writelines(line)
 
+#進捗確認のための将来対応
+class MyLogger(object):
+    def debug(self, msg):
+        pass
 
+    def warning(self, msg):
+        pass
+
+    def error(self, msg):
+        pass
+
+#進捗確認のための将来対応
+def my_hook(d):
+    pass
+    #if d['status'] == 'finished':
+    #    print('Done downloading, now converting ...')
 
 def main():
     #PythonのCGIスクリプトから出力したHTMLの日本語文字化け防止
@@ -211,6 +226,10 @@ def main():
     down_dir = "../podcast/"
     #出力ファイル名をオプション変数（辞書）に登録する
     ydl_opts["outtmpl"] = down_dir+outtmpl
+
+    #進捗確認のための将来対応
+    ydl_opts["logger"] = MyLogger()
+    ydl_opts["progress_hooks"] = [my_hook]
 
     #（将来対応）
     #podcastフォルダ内にファイルが多数あれば、削除する
