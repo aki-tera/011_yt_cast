@@ -7,6 +7,7 @@ This program can download from Video(can be downloaded  by youtube_dl) by your b
 function
 1. download file from youtube, niconico, etc.
 0. login if you have account for each services.
+0. Distribution of podcast within local LAN
 0. resume donwload function(if download stop, wait 60seconds and auto resume)
 
 How to use
@@ -19,7 +20,7 @@ How to use
 0. Enter the URL you want to download and click "Get title".  
 0. If you can show download's title, click "download".
 0. Download complete, click "Return top page".
-0. after that, you can download that files.
+0. after that, you can download that files at podcast.
 
 
 ***
