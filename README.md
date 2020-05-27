@@ -1,5 +1,6 @@
 # 011_yt_cast
 Create iPhone podcast RSS feed
+->This program isn't update.Please see 015_appache_for_win.
 
 ***
 This program can download from Video(can be downloaded  by youtube_dl) by your browser and can create iPhone podcast RSS feed.
